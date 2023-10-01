@@ -157,10 +157,11 @@ ISR(TIMER0_OVF_vect) {
 
 
 	if (isEnableSendBrightness()) {
-		send_int_Uart(getBrighnessValue());
+		// send_int_Uart(getBrighnessValue());
 		//send_int_Uart(getBrighnessValue());
-		setPwm(getBrighnessValue());
-		disableSendBrightness();
+		//send_double_Uart(getBrighnessValue());
+		//setPwm(getBrighnessValue());
+		//disableSendBrightness();
 		//setPwm(getBrighnessValue());
 	}
 }

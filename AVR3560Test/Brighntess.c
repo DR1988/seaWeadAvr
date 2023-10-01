@@ -6,6 +6,7 @@
  */ 
 #include "brightness.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 static struct Brightness brightness = {0, 0};
 
@@ -21,14 +22,16 @@ void isEnableSendBrightness() {
 	return brightness.shouldSend == 1;
 }
 
-void getBrighnessValue() {
+double getBrighnessValue() {
 	return brightness.value;
 }
 
+double xxx;
 int decodeBrighntessCommand(volatile unsigned char commands[], int mainLoop) {
 	unsigned int i = mainLoop;
 	unsigned int j = 0;
 	unsigned char tempBuf[10];
+	
 	while(commands[i] != '|') {
 		if (commands[i] == 'B') {
 			i += 1;
@@ -37,7 +40,11 @@ int decodeBrighntessCommand(volatile unsigned char commands[], int mainLoop) {
 				i++;
 				j++;
 			}
-			sscanf(tempBuf, "%d", &brightness.value);
+			double valuess = atof(tempBuf);
+			brightness.value = valuess;
+			send_double_Uart(getBrighnessValue());
+			setPwm(getBrighnessValue());
+			
 			for (int tempBufCount=0; tempBufCount<10; tempBufCount++){
 				tempBuf[tempBufCount] = NULL;
 			}

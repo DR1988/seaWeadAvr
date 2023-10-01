@@ -10,7 +10,7 @@
 #define BRIGHTNESS_H_
 
 struct Brightness{
-	volatile unsigned int value;
+	double value;
 	volatile unsigned int shouldSend;
 };
 
@@ -21,6 +21,6 @@ void disableSendBrightness();
 
 void isEnableSendBrightness();
 
-void getBrighnessValue();
+double getBrighnessValue();
 
 #endif /* BRIGHTNESS_H_ */
