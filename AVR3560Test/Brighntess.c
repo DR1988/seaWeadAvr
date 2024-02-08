@@ -26,7 +26,7 @@ double getBrighnessValue() {
 	return brightness.value;
 }
 
-double xxx;
+
 int decodeBrighntessCommand(volatile unsigned char commands[], int mainLoop) {
 	unsigned int i = mainLoop;
 	unsigned int j = 0;

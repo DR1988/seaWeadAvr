@@ -59,6 +59,7 @@ int decodeZCommand(volatile unsigned char commands[], int mainLoop) {
 	unsigned int i = mainLoop;
 	unsigned int j = 0;
 	unsigned char tempBuf[10];
+
 	while(commands[i] != '|') {
 		if (commands[i] == 'E') {
 			if (commands[i + 1] == '1') {
@@ -82,7 +83,7 @@ int decodeZCommand(volatile unsigned char commands[], int mainLoop) {
 				i++;
 				j++;
 			}
-			sscanf(tempBuf, "%d", &zStepper.steps_to_do);
+			sscanf(tempBuf, "%ld", &zStepper.steps_to_do);
 			for (int tempBufCount=0; tempBufCount<10; tempBufCount++){
 				tempBuf[tempBufCount] = NULL;
 			}

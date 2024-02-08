@@ -13,13 +13,16 @@
 #include <math.h>
 
 void setPwm(double Pwm){
+	DDRH |= (1 << DDH5);
 	if (Pwm <= 100)
 	{
 		OCR4C = (uint16_t) ICR4 * 0.01 * Pwm;
 	} else if (Pwm <= 0) {
 		OCR4C = 0;
+		DDRH &= ~(1 << DDH5);
 	} else if (Pwm > 100) {
 		OCR4C = 0;
+		DDRH &= ~(1 << DDH5);
 	}
 }
 

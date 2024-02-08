@@ -74,6 +74,19 @@ void decodeCommands(volatile unsigned char commands[])
 			//TransmitUART0(commands[i]);
 			i = decodePurgeCommand(commands, i);
 		}
+		
+		// air lift command
+		if (commands[i] == 'a') {
+			i = decodeAirLiftCommand(commands, i);	
+		}
+		
+		// optic measurement
+		if (commands[i] == 'o') {
+			i = decodeOpticMeasurmentCommand(commands, i);
+		}
+		
+		
+		
 		// stop command from control program
 		i++;
 	}
@@ -97,7 +110,7 @@ void setup() {
 	//
 	//DDRH |= (1 << DDH5);
 	
-	InitializePWM_4C(1000, 0);
+	InitializePWM_4C(300, 0);
 	
 	setupXaxis();
 	setupYaxis();
@@ -126,7 +139,7 @@ int main(void)
 
 int step = 0;
 int divider = 0;
-int counterValue = 400;
+int counterValue = 1400;
 int connected = 0;
 ISR(TIMER0_OVF_vect) {
 	

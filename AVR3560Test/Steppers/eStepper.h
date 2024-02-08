@@ -10,8 +10,8 @@
 #define ESTEPPER_H_
 
 struct Stepper{
-	volatile unsigned int steps_to_do;
-	volatile unsigned int done_steps;
+	volatile unsigned long steps_to_do;
+	volatile unsigned long done_steps;
 };
 
 void enableE();

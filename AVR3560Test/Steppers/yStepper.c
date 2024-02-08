@@ -84,7 +84,7 @@ int decodeYCommand(volatile unsigned char commands[], int mainLoop) {
 				i++;
 				j++;
 			}
-			sscanf(tempBuf, "%d", &yStepper.steps_to_do);
+			sscanf(tempBuf, "%ld", &yStepper.steps_to_do);
 			for (int tempBufCount=0; tempBufCount<10; tempBufCount++){
 				tempBuf[tempBufCount] = NULL;
 			}

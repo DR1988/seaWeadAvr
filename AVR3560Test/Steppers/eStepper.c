@@ -86,7 +86,7 @@ int decodeECommand(volatile unsigned char commands[], int mainLoop) {
 				i++;
 				j++;
 			}
-			sscanf(tempBuf, "%d", &eStepper.steps_to_do);
+			sscanf(tempBuf, "%ld", &eStepper.steps_to_do);
 			for (int tempBufCount=0; tempBufCount<10; tempBufCount++){
 				tempBuf[tempBufCount] = NULL;
 			}
